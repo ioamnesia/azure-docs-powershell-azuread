@@ -24,6 +24,29 @@ The **New-AzureADServiceAppRoleAssignment** cmdlet assigns a service principal t
 
 ## EXAMPLES
 
+### Example 1: Assign user to Azure AD Application
+
+
+ 
+```
+
+PS C:\> $serviceprincipal = Get-AzureADServicePrincipal -SearchString "My App"
+PS C:\> $approleid = "00000000-0000-0000-0000-000000000000"   #Or AppRoleId required
+PS C:\> $user = Get-AzureADUser -SearchString "John Doe"
+PS C:\> New-AzureADServiceAppRoleAssignment -Id $approleid -ObjectId $serviceprincipal.objectid -PrincipalId $user.objectid -ResourceId $serviceprincipal.objectid
+
+
+ 
+```
+
+
+ 
+In this example John Doe is granted access to the Azure AD Enterprise Application "My App" which has no AppRoles defined. 
+
+
+ 
+
+
 ## PARAMETERS
 
 ### -Id
